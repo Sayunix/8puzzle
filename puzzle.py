@@ -87,5 +87,3 @@ class Puzzle:
             new_state = self.swap(empty, empty + 1)
             #print(str(self.cost))
             return Puzzle(new_state, 'move_right', self, self.cost + 1)
-
-

@@ -30,9 +30,13 @@ def main():
     print("----------------------------------------------")
     man_or_mis = input("Solve puzzle with manhattan or number of misplaced tiles: ")
     if man_or_mis == "man":
+        start = time.time()
         aStar_manhattan(start_node, goalstate_node)
+        print((time.time() - start))
     elif man_or_mis == "mis":
+        start = time.time()
         aStar_misplaced(start_node, goalstate_node)
+        print((time.time() - start))
     else:
         print("please give a valid answer")
 
