@@ -5,7 +5,8 @@ class Puzzle:
         self.direction = direction
         self.parent = parent
         self.cost = cost
-        self.total_cost = cost + self.manhattan_distance()
+        self.total_manhattan = cost + self.manhattan_distance()
+        self.total_misplaced = cost + self.misplaced_tiles()
 
     def get_state(self):
         return self.state
@@ -50,37 +51,41 @@ class Puzzle:
     def move_up(self):
         empty = self.find_empty()
         if empty in (0, 1, 2):
-            print("cant move up")
+            # print("cant move up")
             return None
         else:
             new_state = self.swap(empty, empty - 3)
+            #print(str(self.cost))
             return Puzzle(new_state, 'move_up', self, self.cost + 1)
 
     def move_down(self):
         empty = self.find_empty()
         if empty in (6, 7, 8):
-            print("cant move down")
+            # print("cant move down")
             return None
         else:
             new_state = self.swap(empty, empty + 3)
+            #print(str(self.cost))
             return Puzzle(new_state, 'move_down', self, self.cost + 1)
 
     def move_left(self):
         empty = self.find_empty()
         if empty in (0, 3, 6):
-            print("cant move left")
+            # print("cant move left")
             return None
         else:
             new_state = self.swap(empty, empty - 1)
+            #print(str(self.cost))
             return Puzzle(new_state, 'move_left', self, self.cost + 1)
 
     def move_right(self):
         empty = self.find_empty()
         if empty in (2, 5, 8):
-            print("cant move right")
+            # print("cant move right")
             return None
         else:
             new_state = self.swap(empty, empty + 1)
+            #print(str(self.cost))
             return Puzzle(new_state, 'move_right', self, self.cost + 1)
 
 
