@@ -19,10 +19,9 @@ def aStar_manhattan(node, goal):
         closed_list.append(expand_node)
 
         if expand_node.get_state() == goal_node.get_state():
-            return print("Puzzle solved !!!!")
+            return print("Puzzle solved!")
 
-
-        # expand the top node and add all elements into list only if they ar not None
+        # expand the top node and add all elements into list only if they are not None
         if expand_node.direction != "move_down":
             if expand_node.move_up() is not None:
                 newNode = expand_node.move_up()
@@ -75,9 +74,9 @@ def aStar_misplaced(node, goal):
         closed_list.append(expand_node)
 
         if expand_node.get_state() == goal_node.get_state():
-            return print("Puzzle solved !!!!")
+            return print("Puzzle solved!")
 
-        # expand the top node and add all elements into list only if they ar not None
+        # expand the top node and add all elements into list only if they are not None
         if expand_node.direction != "move_down":
             if expand_node.move_up() is not None:
                 newNode = expand_node.move_up()

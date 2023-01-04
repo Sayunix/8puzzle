@@ -49,7 +49,7 @@ class Puzzle:
                 goal_index = i
                 distance = abs(start_index // 3 - goal_index // 3) + abs(start_index % 3 - goal_index % 3)
                 sum = sum + distance
-            start_index = start_index +1
+            start_index = start_index + 1
             counter = counter + 1
         return sum
 
