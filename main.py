@@ -6,13 +6,11 @@ from algorithm import aStar_manhattan
 from algorithm import aStar_misplaced
 import time
 
-num = gen_num()
 # Defines the goal-state of the puzzle in a List
 goalstate = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-randomfield = num
-# randomfield = [1, 2, 0, 3, 4, 5, 6, 7, 8]
-start_node = Puzzle(randomfield, None, None, 0)
 goalstate_node = Puzzle(goalstate, None, None, 0)
+# randomfield = [1, 2, 0, 3, 4, 5, 6, 7, 8]
+
 
 
 # Prints the goal state and a random state of a field, checks if the random field is solvable
@@ -20,6 +18,9 @@ goalstate_node = Puzzle(goalstate, None, None, 0)
 # Asks for User input to choose manhattan or hamming heuristic to solve puzzle
 # Solves puzzle based on given user input with chosen heuristic, or exists program on invalid input
 def main():
+    randomfield = gen_num()
+    start_node = Puzzle(randomfield, None, None, 0)
+
     print("Goalstate: ")
     print_field(goalstate)
     print("Random field: ")
@@ -34,18 +35,12 @@ def main():
     print("Manhattan distance: " + str(start_node.manhattan_distance()))
 
     print("----------------------------------------------")
-    man_or_mis = input("Solve puzzle with manhattan <man> or number of misplaced <mis> tiles: ")
-    if man_or_mis == "man":
-        start = time.time()
-        aStar_manhattan(start_node, goalstate_node)
-        print((time.time() - start))
-    elif man_or_mis == "mis":
-        start = time.time()
-        aStar_misplaced(start_node, goalstate_node)
-        print((time.time() - start))
-    else:
-        print("please give a valid answer")
+    aStar_manhattan(start_node, goalstate_node)
+
+    #aStar_misplaced(start_node, goalstate_node)
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     main()
+    print("--- %s seconds ---" % (time.time() - start_time))

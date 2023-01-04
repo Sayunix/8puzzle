@@ -1,10 +1,12 @@
 import random
 
+
 # Returns random number between 0 and 8
 def gen_num():
     num = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     random.shuffle(num)
     return num
+
 
 # Takes a random field and prints it out, replaces zero with space
 def print_field(rfield):
