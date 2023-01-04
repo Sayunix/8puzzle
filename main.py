@@ -7,6 +7,7 @@ from algorithm import aStar_misplaced
 import time
 
 num = gen_num()
+# Defines the goal-state of the puzzle in a List
 goalstate = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 randomfield = num
 # randomfield = [1, 2, 0, 3, 4, 5, 6, 7, 8]
@@ -28,7 +29,7 @@ def main():
     print("Manhattan distance: " + str(start_node.manhattan_distance()))
 
     print("----------------------------------------------")
-    man_or_mis = input("Solve puzzle with manhattan or number of misplaced tiles: ")
+    man_or_mis = input("Solve puzzle with manhattan <man> or number of misplaced <mis> tiles: ")
     if man_or_mis == "man":
         start = time.time()
         aStar_manhattan(start_node, goalstate_node)
@@ -43,5 +44,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
