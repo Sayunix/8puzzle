@@ -1,3 +1,4 @@
+# Checks for solvability of field
 def is_solvable(num):
     counter = 0
     for i in range(0, 9):

@@ -1,6 +1,8 @@
 from puzzle import Puzzle
 from printfield import print_field
 
+# aStar algorithm with manhattan heuristic
+# todo aStar beschreiben und manhattan heuristic
 
 def aStar_manhattan(node, goal):
     start_node = Puzzle(node.get_state(), None, None, 0)
@@ -54,6 +56,9 @@ def aStar_manhattan(node, goal):
         #print(str(counter) + "----------------------------------------------")
         #print("----------------------------------------------")
     print(counter)
+
+# aStar algorithm with hamming heuristic
+#todo aStar beschreiben und hamming heuristic
 
 def aStar_misplaced(node, goal):
     start_node = Puzzle(node.get_state(), None, None, 0)
