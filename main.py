@@ -29,6 +29,7 @@ def main():
         print("is not solvable")
         exit()
 
+
     print("number of misplaced tiles: " + str(start_node.misplaced_tiles()))
     print("Manhattan distance: " + str(start_node.manhattan_distance()))
 
