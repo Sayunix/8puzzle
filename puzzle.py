@@ -60,7 +60,6 @@ class Puzzle:
             return None
         else:
             new_state = self.swap(empty, empty - 3)
-            #print(str(self.cost))
             return Puzzle(new_state, 'move_up', self, self.cost + 1)
 
     # Moves empty field down or returns None if not possible
@@ -70,7 +69,6 @@ class Puzzle:
             return None
         else:
             new_state = self.swap(empty, empty + 3)
-            #print(str(self.cost))
             return Puzzle(new_state, 'move_down', self, self.cost + 1)
 
     # Moves empty field left or returns None if not possible
@@ -80,7 +78,6 @@ class Puzzle:
             return None
         else:
             new_state = self.swap(empty, empty - 1)
-            #print(str(self.cost))
             return Puzzle(new_state, 'move_left', self, self.cost + 1)
 
     # Moves empty field right or returns None if not possible
@@ -90,5 +87,4 @@ class Puzzle:
             return None
         else:
             new_state = self.swap(empty, empty + 1)
-            #print(str(self.cost))
             return Puzzle(new_state, 'move_right', self, self.cost + 1)

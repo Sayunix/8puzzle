@@ -5,10 +5,8 @@ from printfield import print_field
 # todo aStar beschreiben und manhattan heuristic
 
 def aStar_manhattan(node, goal):
-    start_node = Puzzle(node.get_state(), None, None, 0)
-    goal_node = Puzzle(goal.get_state(), None, None, 0)
-
-    open_list = [start_node]
+    open_list = [node]
+    hallo = [node.get_state()]
     closed_list = []
     counter = 0
 
@@ -18,37 +16,37 @@ def aStar_manhattan(node, goal):
         expand_node = open_list.pop(0)
         closed_list.append(expand_node)
 
-        if expand_node.get_state() == goal_node.get_state():
+        if expand_node.get_state() == goal.get_state():
             return print("Puzzle solved!")
 
         # expand the top node and add all elements into list only if they are not None
         if expand_node.direction != "move_down":
-            if expand_node.move_up() is not None:
+            if expand_node.move_up() is not None and expand_node.move_up().get_state() not in hallo:
                 newNode = expand_node.move_up()
+                # print_field(newNode.get_state())
+                hallo.append(newNode.get_state())
                 open_list.append(newNode)
-                #print_field(newNode.get_state())
-                #print(str(newNode.total_manhattan))
 
         if expand_node.direction != "move_up":
-            if expand_node.move_down() is not None:
+            if expand_node.move_down() is not None and expand_node.move_down().get_state() not in hallo:
                 newNode = expand_node.move_down()
+                # print_field(newNode.get_state())
+                hallo.append(newNode.get_state())
                 open_list.append(newNode)
-                #print_field(newNode.get_state())
-                #print(str(newNode.total_manhattan))
 
         if expand_node.direction != "move_left":
-            if expand_node.move_right() is not None:
+            if expand_node.move_right() is not None and expand_node.move_right().get_state() not in hallo:
                 newNode = expand_node.move_right()
+                # print_field(newNode.get_state())
+                hallo.append(newNode.get_state())
                 open_list.append(newNode)
-                #print_field(newNode.get_state())
-                #print(str(newNode.total_manhattan))
 
         if expand_node.direction != "move_right":
-            if expand_node.move_left() is not None:
+            if expand_node.move_left() is not None and expand_node.move_left().get_state() not in hallo:
                 newNode = expand_node.move_left()
+                # print_field(newNode.get_state())
+                hallo.append(newNode.get_state())
                 open_list.append(newNode)
-                #print_field(newNode.get_state())
-                #print(str(newNode.total_manhattan))
 
 
         counter += 1
@@ -60,10 +58,8 @@ def aStar_manhattan(node, goal):
 #todo aStar beschreiben und hamming heuristic
 
 def aStar_misplaced(node, goal):
-    start_node = Puzzle(node.get_state(), None, None, 0)
-    goal_node = Puzzle(goal.get_state(), None, None, 0)
-
-    open_list = [start_node]
+    open_list = [node]
+    hallo = [node.get_state()]
     closed_list = []
     counter = 0
 
@@ -73,39 +69,40 @@ def aStar_misplaced(node, goal):
         expand_node = open_list.pop(0)
         closed_list.append(expand_node)
 
-        if expand_node.get_state() == goal_node.get_state():
-            return print("Puzzle solved!")
+        if expand_node.get_state() == goal.get_state():
+            print("Puzzle solved!")
+            print("nodes expanded:" + str(counter))
+            return expand_node
 
         # expand the top node and add all elements into list only if they are not None
         if expand_node.direction != "move_down":
-            if expand_node.move_up() is not None:
+            if expand_node.move_up() is not None and expand_node.move_up().get_state() not in hallo:
                 newNode = expand_node.move_up()
+                # print_field(newNode.get_state())
+                hallo.append(newNode.get_state())
                 open_list.append(newNode)
-                print_field(newNode.get_state())
-                print(str(newNode.total_misplaced))
 
         if expand_node.direction != "move_up":
-            if expand_node.move_down() is not None:
+            if expand_node.move_down() is not None and expand_node.move_down().get_state() not in hallo:
                 newNode = expand_node.move_down()
+                # print_field(newNode.get_state())
+                hallo.append(newNode.get_state())
                 open_list.append(newNode)
-                print_field(newNode.get_state())
-                print(str(newNode.total_misplaced))
 
         if expand_node.direction != "move_left":
-            if expand_node.move_right() is not None:
+            if expand_node.move_right() is not None and expand_node.move_right().get_state() not in hallo:
                 newNode = expand_node.move_right()
+                # print_field(newNode.get_state())
+                hallo.append(newNode.get_state())
                 open_list.append(newNode)
-                print_field(newNode.get_state())
-                print(str(newNode.total_misplaced))
 
         if expand_node.direction != "move_right":
-            if expand_node.move_left() is not None:
+            if expand_node.move_left() is not None and expand_node.move_left().get_state() not in hallo:
                 newNode = expand_node.move_left()
+                # print_field(newNode.get_state())
+                hallo.append(newNode.get_state())
                 open_list.append(newNode)
-                print_field(newNode.get_state())
-                print(str(newNode.total_misplaced))
 
         counter += 1
         #print(str(counter) + "----------------------------------------------")
         #print("----------------------------------------------")
-    print(counter)

@@ -6,7 +6,7 @@ def is_solvable(num):
             if num[i] > num[j] and num[i] != 0 and num[j] != 0:
                 counter += 1
     print(f'invers num: {counter}')
-    if (counter % 2 == 0):
+    if counter % 2 == 0:
         return True
     else:
         return False
