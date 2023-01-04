@@ -15,6 +15,10 @@ start_node = Puzzle(randomfield, None, None, 0)
 goalstate_node = Puzzle(goalstate, None, None, 0)
 
 
+# Prints the goal state and a random state of a field, checks if the random field is solvable
+# Prints the current results of the two heuristics
+# Asks for User input to choose manhattan or hamming heuristic to solve puzzle
+# Solves puzzle based on given user input with chosen heuristic, or exists program on invalid input
 def main():
     print("Goalstate: ")
     print_field(goalstate)
