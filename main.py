@@ -21,26 +21,31 @@ def main():
     randomfield = gen_num()
     start_node = Puzzle(randomfield, None, None, 0)
 
-    print("Goalstate: ")
-    print_field(goalstate)
-    print("Random field: ")
-    print_field(randomfield)
+    #print("Goalstate: ")
+    #print_field(goalstate)
+    #print("Random field: ")
+    #print_field(randomfield)
 
     if not is_solvable(randomfield):
-        print("is not solvable")
-        exit()
+        return print("is not solvable")
+
 
 
     print("number of misplaced tiles: " + str(start_node.misplaced_tiles()))
     print("Manhattan distance: " + str(start_node.manhattan_distance()))
 
     print("----------------------------------------------")
-    aStar_manhattan(start_node, goalstate_node)
+    #aStar_manhattan(start_node, goalstate_node)
 
-    #aStar_misplaced(start_node, goalstate_node)
+
+    aStar_misplaced(start_node, goalstate_node)
 
 
 if __name__ == '__main__':
-    start_time = time.time()
-    main()
-    print("--- %s seconds ---" % (time.time() - start_time))
+    start_main = time.time()
+    for i in range(100):
+        print(i+1)
+        start_time = time.time()
+        main()
+        print("--- %s seconds ---" % (time.time() - start_time))
+    print("--- %s seconds --- in total" % (time.time() - start_main))
