@@ -24,7 +24,6 @@ def main1():
         # print_field(randomfield)
 
         if not is_solvable(randomfield):
-            i+=1
             print("is not solvable")
             continue
         expanded_nodes = aStar_manhattan(start_node, goalstate_node)
