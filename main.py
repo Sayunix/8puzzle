@@ -6,46 +6,62 @@ from algorithm import aStar_manhattan
 from algorithm import aStar_misplaced
 import time
 
-# Defines the goal-state of the puzzle in a List
-goalstate = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-goalstate_node = Puzzle(goalstate, None, None, 0)
-# randomfield = [1, 2, 0, 3, 4, 5, 6, 7, 8]
-
-
 
 # Prints the goal state and a random state of a field, checks if the random field is solvable
 # Prints the current results of the two heuristics
 # Asks for User input to choose manhattan or hamming heuristic to solve puzzle
 # Solves puzzle based on given user input with chosen heuristic, or exists program on invalid input
-def main():
-    randomfield = gen_num()
-    start_node = Puzzle(randomfield, None, None, 0)
+def main1():
+    counter_manhattan = 0
+    for i in range(100):
+        randomfield = gen_num()
+        start_node = Puzzle(randomfield, None, None, 0)
 
-    #print("Goalstate: ")
-    #print_field(goalstate)
-    #print("Random field: ")
-    #print_field(randomfield)
+        # print("Goalstate: ")
+        # print_field(goalstate)
+        # print("Random field: ")
+        # print_field(randomfield)
 
-    if not is_solvable(randomfield):
-        return print("is not solvable")
-
-
-
-    print("number of misplaced tiles: " + str(start_node.misplaced_tiles()))
-    print("Manhattan distance: " + str(start_node.manhattan_distance()))
-
-    print("----------------------------------------------")
-    #aStar_manhattan(start_node, goalstate_node)
+        if not is_solvable(randomfield):
+            print("is not solvable")
+            continue
+        expanded_nodes = aStar_manhattan(start_node, goalstate_node)
+        counter_manhattan += expanded_nodes
+    return counter_manhattan
 
 
-    aStar_misplaced(start_node, goalstate_node)
+def main2():
+    counter_hemming = 0
+    for i in range(100):
+        randomfield = gen_num()
+        start_node = Puzzle(randomfield, None, None, 0)
+
+        if not is_solvable(randomfield):
+            print("is not solvable")
+            continue
+        expanded_nodes = aStar_misplaced(start_node, goalstate_node)
+        counter_hemming += expanded_nodes
+    return counter_hemming
 
 
 if __name__ == '__main__':
-    start_main = time.time()
-    for i in range(100):
-        print(i+1)
-        start_time = time.time()
-        main()
-        print("--- %s seconds ---" % (time.time() - start_time))
-    print("--- %s seconds --- in total" % (time.time() - start_main))
+    # Defines the goal-state of the puzzle in a List
+    goalstate = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    goalstate_node = Puzzle(goalstate, None, None, 0)
+    # randomfield = [1, 2, 0, 3, 4, 5, 6, 7, 8]
+    # start_main1 = time.time()
+    # counter1 = main1()
+    # total_time1 = time.time() - start_main1
+    #print("manhattan finished")
+    start_main2 = time.time()
+    counter2 = main2()
+    total_time2 = time.time() - start_main2
+    # print("Manhattan:")
+    # print("Average nodes expanded: " + str(counter1 / 100))
+    # print("--- %s seconds --- in total" % total_time1)
+    # print(" %s seconds on average" % (total_time1 / 100))
+
+    print("Hemming:")
+    print("Average nodes expanded: " + str(counter2 / 100))
+    print("--- %s seconds --- in total" % total_time2)
+    print(" %s seconds on average" % (total_time2 / 100))
