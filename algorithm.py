@@ -8,7 +8,7 @@ from printfield import print_field
 # while a complete algorithm finds all the possible outcomes of a problem.
 # https://www.simplilearn.com/tutorials/artificial-intelligence-tutorial/a-star-algorithm
 
-# Manhattan heuristic: The sum of the misplaced tiles if the generated field is compared to the goal field
+# Manhattan heuristic: shortest distance between two points in our case on a raster grid
 
 # aStar algorithm with manhattan heuristic
 def aStar_manhattan(node, goal):

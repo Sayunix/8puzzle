@@ -1,9 +1,8 @@
 class Puzzle:
     # Constructor for puzzle object
-    def __init__(self, state, direction, parent, cost):
+    def __init__(self, state, direction, cost):
         self.state = state
         self.direction = direction
-        self.parent = parent
         self.cost = cost
         self.total_manhattan = cost + self.manhattan_distance()
         self.total_misplaced = cost + self.misplaced_tiles()
@@ -60,7 +59,7 @@ class Puzzle:
             return None
         else:
             new_state = self.swap(empty, empty - 3)
-            return Puzzle(new_state, 'move_up', self, self.cost + 1)
+            return Puzzle(new_state, 'move_up', self.cost + 1)
 
     # Moves empty field down or returns None if not possible
     def move_down(self):
@@ -69,7 +68,7 @@ class Puzzle:
             return None
         else:
             new_state = self.swap(empty, empty + 3)
-            return Puzzle(new_state, 'move_down', self, self.cost + 1)
+            return Puzzle(new_state, 'move_down', self.cost + 1)
 
     # Moves empty field left or returns None if not possible
     def move_left(self):
@@ -78,7 +77,7 @@ class Puzzle:
             return None
         else:
             new_state = self.swap(empty, empty - 1)
-            return Puzzle(new_state, 'move_left', self, self.cost + 1)
+            return Puzzle(new_state, 'move_left', self.cost + 1)
 
     # Moves empty field right or returns None if not possible
     def move_right(self):
@@ -87,4 +86,4 @@ class Puzzle:
             return None
         else:
             new_state = self.swap(empty, empty + 1)
-            return Puzzle(new_state, 'move_right', self, self.cost + 1)
+            return Puzzle(new_state, 'move_right', self.cost + 1)

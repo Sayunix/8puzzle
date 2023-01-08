@@ -16,7 +16,7 @@ def main1():
     i = 0
     while i < 100:
         randomfield = gen_num()
-        start_node = Puzzle(randomfield, None, None, 0)
+        start_node = Puzzle(randomfield, None, 0)
 
         if not is_solvable(randomfield):
             print("is not solvable")
@@ -32,7 +32,7 @@ def main2():
     i = 0
     while i < 100:
         randomfield = gen_num()
-        start_node = Puzzle(randomfield, None, None, 0)
+        start_node = Puzzle(randomfield, None, 0)
 
         if not is_solvable(randomfield):
             print("is not solvable")
@@ -46,7 +46,7 @@ def main2():
 if __name__ == '__main__':
     # Defines the goal-state of the puzzle in a List
     goalstate = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    goalstate_node = Puzzle(goalstate, None, None, 0)
+    goalstate_node = Puzzle(goalstate, None, 0)
 
     start_main1 = time.time()
     counter1 = main1()
