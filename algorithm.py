@@ -2,9 +2,15 @@ from puzzle import Puzzle
 from printfield import print_field
 
 
-# aStar algorithm with manhattan heuristic
-# todo aStar beschreiben und manhattan heuristic
+# A* is a searching algorithm that is used to find the shortest path between an initial and a final point.
+# It searches for shorter paths first, thus making it an optimal and complete algorithm.
+# An optimal algorithm will find the least cost outcome for a problem,
+# while a complete algorithm finds all the possible outcomes of a problem.
+# https://www.simplilearn.com/tutorials/artificial-intelligence-tutorial/a-star-algorithm
 
+# Manhattan heuristic: The sum of the misplaced tiles if the generated field is compared to the goal field
+
+# aStar algorithm with manhattan heuristic
 def aStar_manhattan(node, goal):
     open_list = [node]
     open_state = [node.get_state()]
@@ -55,9 +61,15 @@ def aStar_manhattan(node, goal):
                     open_state.append(nodeLeft.get_state())
                     open_list.append(nodeLeft)
 
-        # print(str(counter) + "----------------------------------------------")
-        # print("----------------------------------------------")
 
+        counter += 1
+        #print(str(counter) + "----------------------------------------------")
+        #print("----------------------------------------------")
+    print(counter)
+
+
+# aStar algorithm with hamming heuristic
+# Hamming heuristic: Hamming distance is the total number of misplaced tiles.
 
 def aStar_misplaced(node, goal):
     open_list = [node]
