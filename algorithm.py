@@ -61,13 +61,6 @@ def aStar_manhattan(node, goal):
                     open_state.append(nodeLeft.get_state())
                     open_list.append(nodeLeft)
 
-
-        counter += 1
-        #print(str(counter) + "----------------------------------------------")
-        #print("----------------------------------------------")
-    print(counter)
-
-
 # aStar algorithm with hamming heuristic
 # Hamming heuristic: Hamming distance is the total number of misplaced tiles.
 
@@ -82,6 +75,7 @@ def aStar_misplaced(node, goal):
         open_list.sort(key=lambda x: x.total_misplaced)
         expand_node = open_list.pop(0)
         closed_list.append(expand_node)
+        counter += 1
 
         if expand_node.get_state() == goal.get_state():
             print("Puzzle solved!")
@@ -120,9 +114,6 @@ def aStar_misplaced(node, goal):
                     open_state.append(nodeLeft.get_state())
                     open_list.append(nodeLeft)
 
-        counter += 1
-        # print(str(counter) + "----------------------------------------------")
-        # print("----------------------------------------------")
 # aStar algorithm with hamming heuristic
 # todo aStar beschreiben und hamming heuristic
 # def aStar_misplaced(node, goal):
